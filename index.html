@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>The Capital Quiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="app">
+    <section id="homeScreen" class="screen active">
+      <header class="app-header">
+        <h1>The Capital Quiz</h1>
+      </header>
+
+      <section class="player-card">
+        <label for="playerName">Player</label>
+        <input id="playerName" type="text" maxlength="20" placeholder="Choose your alias..." />
+      </section>
+
+      <section class="mode-card">
+        <h2>Choose your game:</h2>
+
+        <div class="carousel">
+          <button id="prevModeBtn" class="carousel-arrow">‹</button>
+
+          <div class="carousel-window">
+            <div id="modeCarouselTrack" class="carousel-track">
+              <article class="mode-panel active-panel" id="difficultyPanel">
+                <div class="mode-title">🎯 Difficulty</div>
+
+                <div class="choice-list radio-list">
+                  <button class="difficulty-btn active" data-difficulty="beginner">🐣 Beginner</button>
+                  <button class="difficulty-btn" data-difficulty="medium">🧭 Medium</button>
+                  <button class="difficulty-btn" data-difficulty="hard">🧨 Hard</button>
+                  <button class="difficulty-btn" data-difficulty="rainman">🧠 Rain Man</button>
+                </div>
+              </article>
+
+              <article class="mode-panel" id="regionPanel">
+                <div class="mode-title">🗺️ Regions</div>
+
+                <div class="choice-list checkbox-list">
+                  <button class="region-btn" data-region="Europe">🏰 Europe</button>
+                  <button class="region-btn" data-region="Asia">🍜 Asia</button>
+                  <button class="region-btn" data-region="Africa">🦁 Africa</button>
+                  <button class="region-btn" data-region="South America">🌴 South America</button>
+                  <button class="region-btn" data-region="North America">🗽 North America</button>
+                  <button class="region-btn" data-region="Oceania">🏝️ Oceania</button>
+                  <button class="region-btn" data-region="Territories">🏴 Territories</button>
+                </div>
+              </article>
+
+              <article class="mode-panel everything-panel" id="everythingPanel">
+                <div class="mode-title">🌍 All Countries! All territories!</div>
+                <button id="everythingBtn" class="everything-btn">Everything</button>
+                <p class="everything-copy">Maximum chaos. Zero mercy.</p>
+              </article>
+            </div>
+          </div>
+
+          <button id="nextModeBtn" class="carousel-arrow">›</button>
+        </div>
+      </section>
+
+      <button id="startBtn" class="start-main-btn">▶ Start Quiz</button>
+
+      <section class="hall-card">
+        <h3>🏆 Hall of Fame 🏆</h3>
+        <div class="hall-subtitle">(Everything mode only)</div>
+
+        <ol class="hall-list">
+          <li><span>1.</span> GeoTitan — 198 streak</li>
+          <li><span>2.</span> AtlasPrime — 194 streak</li>
+          <li><span>3.</span> CapitalCrusher — 191 streak</li>
+          <li><span>4.</span> NuukHunter — 187 streak</li>
+          <li><span>5.</span> MapWizard — 184 streak</li>
+          <li><span>6.</span> SeoulSniper — 181 streak</li>
+          <li><span>7.</span> BorderlineInsane — 179 streak</li>
+          <li><span>8.</span> FlagCollector — 176 streak</li>
+          <li><span>9.</span> GeoGoblin — 173 streak</li>
+          <li><span>10.</span> RainMain — 170 streak</li>
+        </ol>
+      </section>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div class="top-bar">
+        <button id="backHomeBtn" class="corner-btn">← Home</button>
+        <button id="audioBtn" class="corner-btn">🔊 Audio OFF</button>
+      </div>
+
+      <header class="app-header compact-header">
+        <h1>The Capital Quiz</h1>
+      </header>
+
+      <section class="question-shell" id="questionShell">
+        <aside class="streak-box">
+          <div class="streak-label">Streak</div>
+          <div class="streak-value">🔥 <span id="streak">0</span></div>
+        </aside>
+
+        <div class="question" id="question">Ready?</div>
+      </section>
+
+      <section class="answer-area">
+        <div class="answer-row">
+          <input
+            id="answerInput"
+            type="text"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="Type your answer..."
+          />
+
+          <button id="submitBtn" class="submit-icon-btn" aria-label="Submit answer">🚀</button>
+        </div>
+      </section>
+
+      <section class="mistakes-info-box" id="mistakesInfoBox">
+        <div class="mistakes-bank-title" id="mistakesBankTitle">🤦 Mistakes bank: 0</div>
+        <button id="learnBtn" class="learn-btn" disabled>🎓 Learn from your mistakes</button>
+      </section>
+
+      <div class="keyboard-space"></div>
+    </section>
+
+    <section id="learningScreen" class="screen learning-screen">
+      <div class="top-bar">
+        <button id="backToGameBtn" class="corner-btn">← Game</button>
+        <button id="learningAudioBtn" class="corner-btn">🔊 Audio OFF</button>
+      </div>
+
+      <header class="app-header compact-header">
+        <h1>The Capital Quiz</h1>
+      </header>
+
+      <section class="question-shell learning-question-shell" id="learningQuestionShell">
+        <aside class="streak-box learning-count-box">
+          <div class="streak-label">Bank</div>
+          <div class="streak-value">🤦 <span id="learningMistakeCountSide">0</span></div>
+        </aside>
+
+        <div class="question learning-question" id="learningQuestion">Ready to study?</div>
+      </section>
+
+      <section class="answer-area">
+        <div class="answer-row">
+          <input
+            id="learningAnswerInput"
+            type="text"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="Type your answer..."
+          />
+
+          <button id="learningSubmitBtn" class="submit-icon-btn learning-submit-btn" aria-label="Submit answer">
+            ✏️
+          </button>
+        </div>
+      </section>
+
+      <div class="keyboard-space"></div>
+    </section>
+
+    <section id="learningIntroModal" class="modal hidden">
+      <div class="modal-card">
+        <h2>🎓 Welcome to the school bench</h2>
+        <p>
+          Your mistakes from the last 24 hours are saved here.
+        </p>
+        <p>
+          Answer the same country or capital correctly <strong>3 times</strong>
+          to clear it from your mistakes bank.
+        </p>
+        <button id="gotItBtn" class="got-it-btn">Got it!</button>
+      </div>
+    </section>
+
+    <div id="confettiLayer" class="confetti-layer"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
